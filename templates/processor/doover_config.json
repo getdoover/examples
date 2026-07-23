@@ -1,0 +1,22 @@
+{
+  "processor_template": {
+    "name": "processor_template",
+    "display_name": "Processor Template",
+    "type": "PRO",
+    "visibility": "PRI",
+    "allow_many": false,
+    "description": "Minimal no-op Doover processor.",
+    "long_description": "README.md",
+    "depends_on": [],
+    "export_config_command": "NO_EXPORT",
+    "export_ui_command": "NO_EXPORT",
+    "lambda_config": {
+      "Environment": {},
+      "Runtime": "python3.13",
+      "Timeout": 300,
+      "Handler": "src.processor_template.handler",
+      "MemorySize": 128,
+      "Architectures": ["arm64"]
+    }
+  }
+}

@@ -1,0 +1,215 @@
+{
+    "analog_input_scaling": {
+        "name": "analog_input_scaling",
+        "display_name": "Analog Input Scaling App",
+        "type": "DEV",
+        "visibility": "PRI",
+        "allow_many": true,
+        "description": "Reads and scales a local analog input as a Docker device app.",
+        "long_description": "README.md",
+        "depends_on": [
+            "platform_interface"
+        ],
+        "image_name": "ghcr.io/YOUR_GITHUB_ORG/analog-input-scaling:main",
+        "build_args": "--platform linux/amd64,linux/arm64",
+        "config_schema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "",
+            "title": "$default",
+            "type": "object",
+            "properties": {
+                "analog_input_pin": {
+                    "title": "Analog Input Pin",
+                    "x-name": "analog_input_pin",
+                    "x-hidden": false,
+                    "type": "integer",
+                    "x-required": true,
+                    "description": "Platform-interface analog input number to poll.",
+                    "x-position": 0
+                },
+                "sensor_power_pin": {
+                    "title": "Sensor Power Pin",
+                    "x-name": "sensor_power_pin",
+                    "x-hidden": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "x-required": false,
+                    "description": "Optional digital output used to power the sensor.",
+                    "default": null,
+                    "x-position": 1
+                },
+                "polling_frequency_hz": {
+                    "title": "Polling Frequency (Hz)",
+                    "x-name": "polling_frequency_hz",
+                    "x-hidden": false,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "x-required": false,
+                    "description": "Number of sensor readings requested per second.",
+                    "default": 1.0,
+                    "x-position": 2,
+                    "minimum": 0.01
+                },
+                "input_minimum": {
+                    "title": "Input Minimum",
+                    "x-name": "input_minimum",
+                    "x-hidden": false,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "x-required": false,
+                    "description": "Raw sensor value corresponding to the output minimum.",
+                    "default": 4.0,
+                    "x-position": 3
+                },
+                "input_maximum": {
+                    "title": "Input Maximum",
+                    "x-name": "input_maximum",
+                    "x-hidden": false,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "x-required": false,
+                    "description": "Raw sensor value corresponding to the output maximum.",
+                    "default": 20.0,
+                    "x-position": 4
+                },
+                "output_minimum": {
+                    "title": "Output Minimum",
+                    "x-name": "output_minimum",
+                    "x-hidden": false,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "x-required": false,
+                    "description": "Engineering value produced at the input minimum.",
+                    "default": 0.0,
+                    "x-position": 5
+                },
+                "output_maximum": {
+                    "title": "Output Maximum",
+                    "x-name": "output_maximum",
+                    "x-hidden": false,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "x-required": false,
+                    "description": "Engineering value produced at the input maximum.",
+                    "default": 100.0,
+                    "x-position": 6
+                },
+                "output_units": {
+                    "title": "Output Units",
+                    "x-name": "output_units",
+                    "x-hidden": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "x-required": false,
+                    "description": "Units displayed beside the scaled value.",
+                    "default": "%",
+                    "x-position": 7
+                },
+                "clamp_output": {
+                    "title": "Clamp Output",
+                    "x-name": "clamp_output",
+                    "x-hidden": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "x-required": false,
+                    "description": "Keep scaled values inside the configured output range.",
+                    "default": true,
+                    "x-position": 8
+                },
+                "dv_app_position": {
+                    "title": "Position",
+                    "x-name": "dv_app_position",
+                    "x-hidden": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "x-required": false,
+                    "description": "Position of Application in UI Structure. Smaller numbers are closer to the top.",
+                    "default": 100,
+                    "x-position": 9,
+                    "minimum": 0
+                },
+                "dv_app_default_open": {
+                    "title": "Default Open",
+                    "x-name": "dv_app_default_open",
+                    "x-hidden": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "x-required": false,
+                    "description": "Whether the application is default open in the UI. By default this is not set - which makes it dynamic on the number of apps installed.",
+                    "default": null,
+                    "x-position": 10
+                }
+            },
+            "additionalElements": true,
+            "required": [
+                "analog_input_pin"
+            ]
+        },
+        "ui_schema": {
+            "displayString": "$config.app().APP_DISPLAY_NAME",
+            "hidden": "$config.app().hidden:boolean:false:boolean:false",
+            "position": "$config.app().dv_app_position:number:100",
+            "icon": null,
+            "colour": null,
+            "defaultOpen": "$config.app().dv_app_default_open:boolean",
+            "type": "uiApplication",
+            "name": "$config.app().APP_KEY",
+            "children": {
+                "scaled_value": {
+                    "name": "scaled_value",
+                    "type": "uiVariable",
+                    "displayString": "Scaled Value",
+                    "showActivity": true,
+                    "form": "radialGauge",
+                    "position": 51,
+                    "hidden": false,
+                    "varType": "float",
+                    "currentValue": "$tag.app().scaled_value:number:null",
+                    "decPrecision": 2,
+                    "live": true
+                },
+                "raw_input": {
+                    "name": "raw_input",
+                    "type": "uiVariable",
+                    "displayString": "Raw Input",
+                    "showActivity": true,
+                    "position": 52,
+                    "hidden": false,
+                    "varType": "float",
+                    "currentValue": "$tag.app().raw_input:number:null",
+                    "decPrecision": 3
+                },
+                "last_reading": {
+                    "name": "last_reading",
+                    "type": "uiVariable",
+                    "displayString": "Last Reading",
+                    "showActivity": true,
+                    "position": 53,
+                    "hidden": false,
+                    "varType": "time",
+                    "currentValue": "$tag.app().last_read_at:string:null"
+                }
+            }
+        }
+    }
+}

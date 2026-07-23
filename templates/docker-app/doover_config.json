@@ -1,0 +1,14 @@
+{
+  "docker_app_template": {
+    "name": "docker_app_template",
+    "display_name": "Docker App Template",
+    "type": "DEV",
+    "visibility": "PRI",
+    "allow_many": true,
+    "description": "Minimal no-op Doover Docker app.",
+    "long_description": "README.md",
+    "depends_on": [],
+    "image_name": "ghcr.io/YOUR_GITHUB_ORG/docker-app-template:main",
+    "build_args": "--platform linux/amd64,linux/arm64"
+  }
+}
