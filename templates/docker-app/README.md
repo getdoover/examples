@@ -1,13 +1,16 @@
-# Minimal Doover Docker App
+# Doover Docker App Template
 
-The smallest useful long-running Doover device app. It starts the managed
-runtime and calls the SDK's default no-op `main_loop` once per second.
+The conventional file structure for a Doover device app with empty config,
+tags, and UI classes. `application.py` contains no-op stubs for the public
+lifecycle, subscription-event, and shutdown hooks.
 
-Copy the folder, rename `docker_app_template`, then override `setup`,
-`main_loop`, or an event handler only when your app needs it.
+Copy the folder, rename `docker_app_template`, then fill in only the classes and
+handlers your app needs.
 
 ```bash
 uv sync
+uv run export-config
+uv run export-ui
 uv run pytest
 docker build -t docker-app-template .
 ```

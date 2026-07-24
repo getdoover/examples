@@ -8,9 +8,9 @@ repository.
 
 | App type | When to use it | Template |
 | --- | --- | --- |
-| Processor | Empty cloud processor using the SDK's no-op handlers. | [Processor template](templates/processor/) |
-| Integration | Empty webhook integration with ingestion endpoint configuration. | [Integration template](templates/integration/) |
-| Docker app | Empty managed device application loop. | [Docker app template](templates/docker-app/) |
+| Processor | Empty config/tags/UI classes and stubbed processor event hooks. | [Processor template](templates/processor/) |
+| Integration | Empty tags/UI, ingestion configuration, and stubbed integration hooks. | [Integration template](templates/integration/) |
+| Docker app | Empty config/tags/UI classes and stubbed loop/event/shutdown hooks. | [Docker app template](templates/docker-app/) |
 | Report generator | Produce downloadable reports from Doover data. | Planned |
 | Widget | Build a custom JavaScript/TypeScript user interface. | Planned |
 | Multi-format app | Ship more than one cooperating app type from a repository. | Planned |
@@ -67,7 +67,8 @@ logic.
 
 ## Adding another template
 
-Keep templates at the absolute deployable minimum. Put configuration, tags, UI,
-protocols, and business logic into focused custom examples instead. Each project
-should stay independently installable and testable and be added to the CI
-matrix below.
+Keep template classes and handlers empty, but retain the conventional file
+structure so users can immediately see where configuration, tags, UI, and
+lifecycle logic belong. Put actual protocols and business logic into focused
+custom examples instead. Each project should stay independently installable and
+testable and be added to the CI matrix below.
