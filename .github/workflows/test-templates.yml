@@ -22,6 +22,7 @@ jobs:
           - examples/processors/on-message-processing
           - examples/integrations/webhook-routing
           - examples/docker-apps/analog-input-scaling
+          - examples/dashboard-widgets/fleet-overview
 
     defaults:
       run:

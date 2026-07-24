@@ -1,0 +1,24 @@
+[project]
+name = "fleet-overview-dashboard"
+version = "0.1.0"
+description = "Companion Doover processor for the fleet overview dashboard widget"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["pydoover>=1.4.2"]
+
+[project.scripts]
+export-config = "fleet_overview_dashboard.app_config:export"
+export-ui = "fleet_overview_dashboard.app_ui:export"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/fleet_overview_dashboard"]
+
+[dependency-groups]
+dev = ["pytest>=8.3.5"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]

@@ -1,7 +1,9 @@
 # Fleet Overview Dashboard Widget
 
-A focused dashboard-level widget adapted from Doover's Vega level sensor
-dashboard. It demonstrates the parts that are specific to a dashboard:
+A focused processor-backed dashboard widget adapted from Doover's Vega level
+sensor dashboard. Its companion processor registers the remote component in
+the interpreter UI and grants the widget access to selected devices. It
+demonstrates the parts that are specific to a dashboard:
 
 - discovering devices granted to the dashboard app through `useDeviceMap`;
 - batch-reading each device's `tag_values` with
@@ -16,6 +18,8 @@ The example reads the tags emitted by the repository's
 ## Build
 
 ```bash
+uv sync
+uv run pytest
 npm ci
 npm run check
 npm run build
@@ -25,11 +29,15 @@ The deployable file is written to
 `assets/FleetOverviewDashboardWidget.js`. Generated `assets`, `dist`, and
 `node_modules` directories are intentionally ignored.
 
-## Connect it to a dashboard app
+## Processor and interpreter UI association
 
-The app that owns this widget must expose a `DEVICE_MAP` through its extended
-permissions. Request the fields used by the table when defining that
-permission:
+The included `FleetOverviewDashboardApplication` owns the remote component.
+`src/fleet_overview_dashboard/app_ui.py` places it in the interpreter UI, and
+`doover_config.json` ties the processor, frontend build command, and generated
+widget asset together.
+
+The processor exposes a `DEVICE_MAP` through its extended permissions and
+requests the fields used by the table:
 
 ```json
 {
@@ -43,7 +51,7 @@ permission:
 }
 ```
 
-Its remote UI element must pass the app key and match the scope/module exposed
+Its remote UI element passes the app key and matches the scope/module exposed
 in `rsbuild.config.ts`:
 
 ```json
@@ -58,7 +66,7 @@ in `rsbuild.config.ts`:
 }
 ```
 
-The Doover host supplies the current dashboard agent ID through
+The Doover host supplies the companion processor's agent ID through
 `useRemoteParams`. `useDeviceMap(agentId, appKey)` then reads only the devices
 granted to that app; the widget deliberately does not fall back to another
 app's permissions.
