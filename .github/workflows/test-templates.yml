@@ -22,6 +22,7 @@ jobs:
           - examples/processors/on-message-processing
           - examples/integrations/webhook-routing
           - examples/docker-apps/analog-input-scaling
+          - examples/device-widgets/tag-values
 
     defaults:
       run:
@@ -47,3 +48,33 @@ jobs:
 
       - name: Run tests
         run: uv run pytest
+
+  test-widget:
+    name: examples/device-widgets/tag-values/dashboard-widget
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: examples/device-widgets/tag-values/dashboard-widget
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: examples/device-widgets/tag-values/dashboard-widget/package-lock.json
+
+      - name: Install frontend
+        run: npm ci
+
+      - name: Test frontend
+        run: npm test
+
+      - name: Type-check frontend
+        run: npm run typecheck
+
+      - name: Build frontend
+        run: npm run build
