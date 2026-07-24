@@ -51,6 +51,7 @@ opinionated than the templates.
 | Processor | [On message processing](examples/processors/on-message-processing/) | Subscription config, validation, tags, UI, calibration, and connection status |
 | Integration | [Webhook routing](examples/integrations/webhook-routing/) | Ingestion decoding, validation, auditing, permissions, and agent routing |
 | Docker app | [Analog input scaling](examples/docker-apps/analog-input-scaling/) | Hardware polling, linear scaling, tags, dynamic UI, and safe shutdown |
+| Dashboard widget | [Fleet overview](examples/dashboard-widgets/fleet-overview/) | Extended-permission device discovery, batched live tag aggregates, and fleet summaries |
 
 ## Template lineage
 
@@ -62,6 +63,8 @@ Doover applications:
 - The Docker/device pattern comes from
   [getdoover/analog-level-sensor](https://github.com/getdoover/analog-level-sensor).
 - The report generator pattern comes from Doover's JSON report generator.
+- The dashboard widget pattern comes from the Vega level sensor's farm water
+  dashboard.
 
 The original projects contain their full production business logic. The custom
 examples retain one useful vertical slice; the templates deliberately omit that
