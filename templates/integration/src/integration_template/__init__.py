@@ -1,16 +1,10 @@
-"""Minimal Doover integration entry point."""
+"""AWS Lambda entry point for the integration template."""
 
 from typing import Any
 
-from pydoover.processor import Application, run_app
+from pydoover.processor import run_app
 
-from .app_config import IntegrationTemplateConfig
-
-
-class IntegrationTemplate(Application):
-    """No-op integration; override on_ingestion_endpoint to handle webhooks."""
-
-    config_cls = IntegrationTemplateConfig
+from .application import IntegrationTemplate
 
 
 def handler(event: dict[str, Any], context: Any) -> None:

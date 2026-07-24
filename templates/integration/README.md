@@ -1,15 +1,17 @@
-# Minimal Doover Integration
+# Doover Integration Template
 
-The smallest useful webhook integration. It exposes Doover's standard ingestion
-endpoint configuration and accepts events through the SDK's default no-op
-handler.
+The conventional file structure for a Doover integration with empty tags and
+UI classes. `application.py` contains no-op stubs for the public lifecycle and
+integration event hooks.
 
-Copy the folder, rename `integration_template`, then implement
-`on_ingestion_endpoint` on `IntegrationTemplate`.
+The ingestion endpoint is the only preconfigured field because it is required
+for receiving webhooks. Copy the folder, rename `integration_template`, then
+fill in only the classes and handlers your app needs.
 
 ```bash
 uv sync
 uv run export-config
+uv run export-ui
 uv run pytest
 ./build.sh
 ```

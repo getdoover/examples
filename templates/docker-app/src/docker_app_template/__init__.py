@@ -1,10 +1,8 @@
-"""Minimal Doover Docker app entry point."""
+"""Container entry point for the Docker app template."""
 
-from pydoover.docker import Application, run_app
+from pydoover.docker import run_app
 
-
-class DockerAppTemplate(Application):
-    """No-op device app; override only the lifecycle methods your app needs."""
+from .application import DockerAppTemplate
 
 
 def main() -> None:

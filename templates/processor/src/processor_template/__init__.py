@@ -1,12 +1,10 @@
-"""Minimal Doover processor entry point."""
+"""AWS Lambda entry point for the processor template."""
 
 from typing import Any
 
-from pydoover.processor import Application, run_app
+from pydoover.processor import run_app
 
-
-class ProcessorTemplate(Application):
-    """No-op processor; override only the event handlers your app needs."""
+from .application import ProcessorTemplate
 
 
 def handler(event: dict[str, Any], context: Any) -> None:

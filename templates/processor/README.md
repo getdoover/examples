@@ -1,13 +1,16 @@
-# Minimal Doover Processor
+# Doover Processor Template
 
-The smallest useful Doover processor project. It deploys and starts, but uses
-the SDK's default no-op event handlers, empty config, empty tags, and empty UI.
+The conventional file structure for a Doover processor with empty config, tags,
+and UI classes. `application.py` contains no-op stubs for the public lifecycle
+and processor event hooks.
 
-Copy the folder, rename `processor_template`, then add only the event method you
-need, such as `on_message_create`, `on_schedule`, or `on_manual_invoke`.
+Copy the folder, rename `processor_template`, then fill in only the classes and
+handlers your app needs.
 
 ```bash
 uv sync
+uv run export-config
+uv run export-ui
 uv run pytest
 ./build.sh
 ```

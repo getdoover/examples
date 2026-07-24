@@ -6,6 +6,8 @@ dependencies = ["pydoover>=1.4.2"]
 
 [project.scripts]
 doover-app-run = "docker_app_template:main"
+export-config = "docker_app_template.app_config:export"
+export-ui = "docker_app_template.app_ui:export"
 
 [build-system]
 requires = ["hatchling"]

@@ -9,7 +9,7 @@
         "long_description": "README.md",
         "depends_on": [],
         "export_config_command": "export-config",
-        "export_ui_command": "NO_EXPORT",
+        "export_ui_command": "export-ui",
         "lambda_config": {
             "Environment": {},
             "Runtime": "python3.13",
@@ -131,6 +131,17 @@
             "required": [
                 "dv_proc_ingestion"
             ]
+        },
+        "ui_schema": {
+            "displayString": "$config.app().APP_DISPLAY_NAME",
+            "hidden": "$config.app().hidden:boolean:false:boolean:false",
+            "position": "$config.app().dv_app_position:number:100",
+            "icon": null,
+            "colour": null,
+            "defaultOpen": "$config.app().dv_app_default_open:boolean",
+            "type": "uiApplication",
+            "name": "$config.app().APP_KEY",
+            "children": {}
         }
     }
 }
