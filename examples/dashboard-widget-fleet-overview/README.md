@@ -12,7 +12,7 @@ demonstrates the parts that are specific to a dashboard:
 - exposing a single-file Module Federation remote for the Doover customer site.
 
 The example reads the tags emitted by the repository's
-[on-message-processing example](../../processors/on-message-processing/):
+[on-message-processing example](../processor-on-message-processing/):
 `measurement` and `status` beneath the `on_message_processing` app key.
 
 ## Build
