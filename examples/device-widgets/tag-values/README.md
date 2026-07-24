@@ -6,6 +6,11 @@ one complete vertical slice: Python app metadata and UI registration, a
 module-federated React widget, channel data loading, value flattening, filtering,
 and tests.
 
+The widget is associated with `TagValuesWidgetApplication`, a Doover processor.
+Its `TagValuesWidgetUI` registers the remote component in the interpreter UI,
+while `doover_config.json` connects the processor handler, frontend build
+command, and generated widget asset.
+
 Unlike a dashboard widget that can query several agents, this widget uses the
 agent supplied by the device page and does not request extended processor
 permissions.
@@ -40,7 +45,7 @@ uv run export-ui
 
 | Path | Purpose |
 | --- | --- |
-| `src/tag_values_widget/` | Device-local host application and remote-component registration |
+| `src/tag_values_widget/` | Companion processor and interpreter UI remote-component registration |
 | `tests/` | Config, UI, and permission-boundary checks |
 | `dashboard-widget/src/TagValuesWidget.tsx` | React component that reads the current agent |
 | `dashboard-widget/src/tagValues.ts` | Tested flattening, filtering, and formatting helpers |
