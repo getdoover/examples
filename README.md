@@ -53,6 +53,7 @@ opinionated than the templates.
 | Integration | [Webhook routing](examples/integrations/webhook-routing/) | Ingestion decoding, validation, auditing, permissions, and agent routing |
 | Docker app | [Analog input scaling](examples/docker-apps/analog-input-scaling/) | Hardware polling, linear scaling, tags, dynamic UI, and safe shutdown |
 | Dashboard widget | [Fleet overview](examples/dashboard-widget-fleet-overview/) | Companion processor UI registration, extended-permission discovery, live aggregates, and fleet summaries |
+| Device widget | [Tag values](examples/device-widget-tag-values/) | Processor-backed interpreter UI, device-local channel access, tag flattening, and filtering |
 
 ## Template lineage
 
