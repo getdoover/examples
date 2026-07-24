@@ -8,16 +8,16 @@ from typing import Any
 from pydoover.models import File
 from pydoover.reports import Application
 
-from .app_config import ReportGeneratorTemplateConfig
+from .app_config import ReportGeneratorConfig
 
 log = logging.getLogger(__name__)
 
 
-class ReportGeneratorTemplate(Application):
+class ReportGenerator(Application):
     """Generate a JSON export of device UI state and tag values."""
 
-    config: ReportGeneratorTemplateConfig
-    config_cls = ReportGeneratorTemplateConfig
+    config: ReportGeneratorConfig
+    config_cls = ReportGeneratorConfig
 
     async def generate(
         self,

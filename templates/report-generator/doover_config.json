@@ -1,7 +1,7 @@
 {
-    "report_generator_template": {
-        "name": "report_generator_template",
-        "display_name": "Report Generator Template",
+    "report_generator": {
+        "name": "report_generator",
+        "display_name": "Report Generator",
         "type": "REP",
         "visibility": "PRI",
         "allow_many": true,
@@ -14,7 +14,7 @@
             "Environment": {},
             "Runtime": "python3.13",
             "Timeout": 300,
-            "Handler": "src.report_generator_template.handler",
+            "Handler": "src.report_generator.handler",
             "MemorySize": 1024,
             "Architectures": [
                 "arm64"

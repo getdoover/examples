@@ -8,7 +8,7 @@ from pydoover.processor import (
 )
 
 
-class ReportGeneratorTemplateConfig(config.Schema):
+class ReportGeneratorConfig(config.Schema):
     dv_proc_extended_permissions = ExtendedPermissionsConfig()
     dv_proc_schedules = ScheduleConfig(
         allowed_modes=["cron"],
@@ -18,7 +18,7 @@ class ReportGeneratorTemplateConfig(config.Schema):
 
 
 def export() -> None:
-    ReportGeneratorTemplateConfig.export(
+    ReportGeneratorConfig.export(
         Path(__file__).parents[2] / "doover_config.json",
-        "report_generator_template",
+        "report_generator",
     )
