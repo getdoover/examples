@@ -11,7 +11,7 @@ repository.
 | Processor | Empty cloud processor using the SDK's no-op handlers. | [Processor template](templates/processor/) |
 | Integration | Empty webhook integration with ingestion endpoint configuration. | [Integration template](templates/integration/) |
 | Docker app | Empty managed device application loop. | [Docker app template](templates/docker-app/) |
-| Report generator | Produce downloadable reports from Doover data. | Planned |
+| Report generator | Produce downloadable JSON reports from Doover data. | [Report generator template](templates/report-generator/) |
 | Widget | Build a custom JavaScript/TypeScript user interface. | Planned |
 | Multi-format app | Ship more than one cooperating app type from a repository. | Planned |
 
@@ -37,8 +37,9 @@ template/
 └── tests/
 ```
 
-The processor and integration templates include `build.sh` for Lambda
-packaging. The Docker template includes the smallest usable `Dockerfile`.
+The processor, integration, and report generator templates include `build.sh`
+for Lambda packaging. The Docker template includes the smallest usable
+`Dockerfile`.
 
 ## Custom examples
 
@@ -60,6 +61,7 @@ Doover applications:
   [getdoover/digital_matter](https://github.com/getdoover/digital_matter).
 - The Docker/device pattern comes from
   [getdoover/analog-level-sensor](https://github.com/getdoover/analog-level-sensor).
+- The report generator pattern comes from Doover's JSON report generator.
 
 The original projects contain their full production business logic. The custom
 examples retain one useful vertical slice; the templates deliberately omit that
