@@ -50,7 +50,7 @@ jobs:
         run: uv run pytest
 
   test-widgets:
-    name: examples/dashboard-widgets/fleet-overview
+    name: examples/dashboard-widgets/fleet-overview frontend
     runs-on: ubuntu-latest
 
     defaults:
