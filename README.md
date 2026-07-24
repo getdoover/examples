@@ -51,7 +51,7 @@ opinionated than the templates.
 | Processor | [On message processing](examples/processors/on-message-processing/) | Subscription config, validation, tags, UI, calibration, and connection status |
 | Integration | [Webhook routing](examples/integrations/webhook-routing/) | Ingestion decoding, validation, auditing, permissions, and agent routing |
 | Docker app | [Analog input scaling](examples/docker-apps/analog-input-scaling/) | Hardware polling, linear scaling, tags, dynamic UI, and safe shutdown |
-| Device widget | [Tag values](examples/device-widgets/tag-values/) | Processor-backed interpreter UI, device-local channel access, tag flattening, and filtering |
+| Device widget | [Tag values](examples/device-widget-tag-values/) | Processor-backed interpreter UI, device-local channel access, tag flattening, and filtering |
 
 ## Template lineage
 
