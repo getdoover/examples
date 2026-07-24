@@ -1,3 +1,11 @@
 node_modules/
 dist/
 assets/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+packages_export/
+requirements.txt
+package.zip

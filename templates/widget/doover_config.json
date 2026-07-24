@@ -1,0 +1,74 @@
+{
+    "widget_template": {
+        "name": "widget_template",
+        "display_name": "Widget Template",
+        "type": "PRO",
+        "visibility": "PRI",
+        "allow_many": false,
+        "description": "Minimal processor-backed Doover widget.",
+        "long_description": "README.md",
+        "depends_on": [],
+        "export_config_command": "export-config",
+        "export_ui_command": "export-ui",
+        "build_widget_command": "npm run build",
+        "widget": "assets/WidgetTemplate.js",
+        "lambda_config": {
+            "Environment": {},
+            "Runtime": "python3.13",
+            "Timeout": 60,
+            "Handler": "src.widget_template.handler",
+            "MemorySize": 128,
+            "Architectures": [
+                "arm64"
+            ]
+        },
+        "config_schema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "",
+            "title": "$default",
+            "type": "object",
+            "properties": {
+                "dv_app_position": {
+                    "title": "Position",
+                    "x-name": "dv_app_position",
+                    "x-hidden": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "x-required": false,
+                    "description": "Position of Application in UI Structure. Smaller numbers are closer to the top.",
+                    "default": 100,
+                    "x-position": 0,
+                    "minimum": 0
+                }
+            },
+            "additionalElements": true,
+            "required": []
+        },
+        "ui_schema": {
+            "displayString": "$config.app().APP_DISPLAY_NAME",
+            "hidden": "$config.app().interpreter_hidden:boolean:false",
+            "position": "$config.app().dv_app_position:number:100",
+            "icon": null,
+            "colour": null,
+            "defaultOpen": true,
+            "type": "uiApplication",
+            "name": "$config.app().APP_KEY",
+            "children": {
+                "WidgetTemplate": {
+                    "name": "WidgetTemplate",
+                    "type": "uiRemoteComponent",
+                    "displayString": "Widget Template",
+                    "showActivity": true,
+                    "componentUrl": "$config.app().dv_widget_url",
+                    "position": 51,
+                    "hidden": false,
+                    "children": {},
+                    "scope": "WidgetTemplate",
+                    "module": "./WidgetTemplate"
+                }
+            }
+        }
+    }
+}

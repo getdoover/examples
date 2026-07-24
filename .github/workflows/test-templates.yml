@@ -19,6 +19,7 @@ jobs:
           - templates/integration
           - templates/docker-app
           - templates/report-generator
+          - templates/widget
           - examples/processors/on-message-processing
           - examples/integrations/webhook-routing
           - examples/docker-apps/analog-input-scaling
