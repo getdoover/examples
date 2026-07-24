@@ -3,7 +3,11 @@ import json
 from datetime import UTC, datetime
 from types import SimpleNamespace
 
-from template_name import TemplateNameConfig, TemplateNameReportGenerator, handler
+from report_generator_template import (
+    ReportGeneratorTemplate,
+    ReportGeneratorTemplateConfig,
+    handler,
+)
 
 
 class Message:
@@ -16,13 +20,13 @@ class Message:
 
 
 def test_template_imports() -> None:
-    assert TemplateNameReportGenerator()
-    assert isinstance(TemplateNameConfig.to_schema(), dict)
+    assert ReportGeneratorTemplate()
+    assert isinstance(ReportGeneratorTemplateConfig.to_schema(), dict)
     assert handler
 
 
 def test_generate_groups_messages_by_channel_and_device() -> None:
-    generator = TemplateNameReportGenerator()
+    generator = ReportGeneratorTemplate()
 
     async def fetch_messages(channel: str, *_args, **_kwargs):
         return [Message(123, channel)]

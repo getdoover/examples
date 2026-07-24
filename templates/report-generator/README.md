@@ -1,15 +1,15 @@
-# Template Name Report Generator
+# Report Generator Template
 
 A minimal Doover report generator that exports `ui_state` and `tag_values`
 messages as JSON, grouped by channel and device.
 
 Copy this folder, then replace each form of the placeholder app name:
 
-- `template-name` for the project and repository name
-- `template_name` for the Python package and Doover app key
-- `TemplateName` for Python classes
-- `templateName` for camel-case identifiers, if you add any
-- `Template Name` for display text
+- `report-generator-template` for the project and repository name
+- `report_generator_template` for the Python package and Doover app key
+- `ReportGeneratorTemplate` for Python classes
+- `reportGeneratorTemplate` for camel-case identifiers, if you add any
+- `Report Generator Template` for display text
 
 ```bash
 uv sync
