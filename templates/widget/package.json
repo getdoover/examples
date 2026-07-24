@@ -1,0 +1,33 @@
+{
+  "name": "widget-template",
+  "version": "0.1.0",
+  "description": "Minimal Doover customer-site widget template",
+  "private": true,
+  "scripts": {
+    "build": "rsbuild build",
+    "check": "tsc --noEmit",
+    "watch": "rsbuild build --watch --mode development"
+  },
+  "dependencies": {
+    "@module-federation/enhanced": "^0.21.6",
+    "@module-federation/rsbuild-plugin": "^0.21.6",
+    "@rsbuild/core": "^1.6.14",
+    "@rsbuild/plugin-react": "^1.4.2",
+    "doover-js": "^0.6.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router": "^7.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "@types/react": "^18.3.28",
+    "@types/react-dom": "^18.3.7",
+    "typescript": "^5.8.3",
+    "webpack": "^5.99.7"
+  },
+  "overrides": {
+    "adm-zip": "^0.6.0",
+    "koa": "^3.1.2",
+    "ws": "^8.21.0"
+  }
+}

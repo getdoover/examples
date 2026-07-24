@@ -1,0 +1,29 @@
+.widget-template {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--foreground);
+  padding: 20px;
+}
+
+.widget-template * {
+  box-sizing: border-box;
+}
+
+.widget-template h2 {
+  font-size: 18px;
+  margin: 4px 0 8px;
+}
+
+.widget-template p {
+  line-height: 1.5;
+  margin: 0;
+}
+
+.widget-template__eyebrow {
+  color: var(--muted-foreground);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}

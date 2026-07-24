@@ -19,9 +19,11 @@ jobs:
           - templates/integration
           - templates/docker-app
           - templates/report-generator
+          - templates/widget
           - examples/processors/on-message-processing
           - examples/integrations/webhook-routing
           - examples/docker-apps/analog-input-scaling
+          - examples/dashboard-widget-fleet-overview
           - examples/device-widget-tag-values
 
     defaults:
@@ -50,6 +52,61 @@ jobs:
         run: uv run pytest
 
   test-widget:
+    name: templates/widget frontend
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: templates/widget
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: templates/widget/package-lock.json
+
+      - name: Install template
+        run: npm ci
+
+      - name: Type-check template
+        run: npm run check
+
+      - name: Build template
+        run: npm run build
+
+  test-widgets:
+    name: examples/dashboard-widget-fleet-overview frontend
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: examples/dashboard-widget-fleet-overview
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: examples/dashboard-widget-fleet-overview/package-lock.json
+
+      - name: Install widget
+        run: npm ci
+
+      - name: Type-check widget
+        run: npm run check
+
+      - name: Build widget
+        run: npm run build
+
+  test-device-widget:
     name: examples/device-widget-tag-values/dashboard-widget
     runs-on: ubuntu-latest
     defaults:
