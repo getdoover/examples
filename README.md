@@ -12,7 +12,7 @@ repository.
 | Integration | Empty tags/UI, ingestion configuration, and stubbed integration hooks. | [Integration template](templates/integration/) |
 | Docker app | Empty config/tags/UI classes and stubbed loop/event/shutdown hooks. | [Docker app template](templates/docker-app/) |
 | Report generator | Produce downloadable JSON reports from Doover data. | [Report generator template](templates/report-generator/) |
-| Widget | Build a custom JavaScript/TypeScript user interface. | Planned |
+| Widget | Build a custom JavaScript/TypeScript user interface. | [Widget template](templates/widget/) |
 | Multi-format app | Ship more than one cooperating app type from a repository. | Planned |
 
 ## Quick start
@@ -39,7 +39,8 @@ template/
 
 The processor, integration, and report generator templates include `build.sh`
 for Lambda packaging. The Docker template includes the smallest usable
-`Dockerfile`.
+`Dockerfile`. The widget template is a React and TypeScript module-federation
+remote built with npm and Rsbuild.
 
 ## Custom examples
 
