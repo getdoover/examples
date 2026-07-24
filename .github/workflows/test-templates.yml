@@ -50,7 +50,7 @@ jobs:
         run: uv run pytest
 
   test-widget:
-    name: templates/widget
+    name: templates/widget frontend
     runs-on: ubuntu-latest
     defaults:
       run:
