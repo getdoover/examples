@@ -1,0 +1,42 @@
+name: Run Linting
+
+on:
+  workflow_call:
+
+jobs:
+  run_linting:
+    name: Run Linting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Lint against the project's minimum supported Python version. Runtime,
+      # test, and deployment workflows use Python 3.13.
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Ruff
+        run: pipx install ruff
+
+      - name: Lint Python with Ruff
+        run: ruff check --output-format=github --target-version=py311
+        continue-on-error: true
+
+      - name: Check Python formatting with Ruff
+        run: ruff format --diff --target-version=py311
+        continue-on-error: true
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install widget dependencies
+        run: npm ci
+
+      - name: Type-check widget
+        run: npm run check
+        continue-on-error: true
