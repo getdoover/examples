@@ -53,7 +53,7 @@ jobs:
         run: uv tool install doover-cli
 
       - name: Build the integration package
-        run: ./build.sh
+        run: sh build.sh
 
       - name: Publish and release
         env:

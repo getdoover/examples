@@ -15,7 +15,7 @@ uv sync
 uv run pytest
 uv run export-config
 uv run export-ui
-./build.sh
+sh build.sh
 ```
 
 ## Example input

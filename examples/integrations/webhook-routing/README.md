@@ -14,7 +14,7 @@ when you only need an empty ingestion endpoint.
 uv sync
 uv run pytest
 uv run export-config
-./build.sh
+sh build.sh
 ```
 
 ## Example webhook

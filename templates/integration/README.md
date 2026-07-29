@@ -13,7 +13,7 @@ uv sync
 uv run export-config
 uv run export-ui
 uv run pytest
-./build.sh
+sh build.sh
 ```
 
 For validation, audit, and agent routing, see the

@@ -65,7 +65,7 @@ jobs:
         run: uv tool install doover-cli
 
       - name: Build the processor package
-        run: ./build.sh
+        run: sh build.sh
 
       - name: Publish and release
         env:

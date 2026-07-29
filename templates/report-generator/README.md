@@ -15,7 +15,7 @@ Copy this folder, then replace each form of the placeholder app name:
 uv sync
 uv run export-config
 uv run pytest
-./build.sh
+sh build.sh
 ```
 
 The `generate` method is the main extension point. Change its channel queries

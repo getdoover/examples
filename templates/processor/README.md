@@ -12,7 +12,7 @@ uv sync
 uv run export-config
 uv run export-ui
 uv run pytest
-./build.sh
+sh build.sh
 ```
 
 For a real message-processing implementation, see the
